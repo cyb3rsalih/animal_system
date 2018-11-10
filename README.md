@@ -1,0 +1,1 @@
+# gulec-tarim-hayvan-takip
