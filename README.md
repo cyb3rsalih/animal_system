@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -22,3 +23,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+# gulec-tarim-hayvan-takip
+>>>>>>> c893eecf78a618cf4ca0f16a19cac80e0d0ffbc0
