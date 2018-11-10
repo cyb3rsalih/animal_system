@@ -6,26 +6,51 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track nested_form': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="#">Features</a>
-          <a class="nav-item nav-link" href="#">Pricing</a>
-          <a class="nav-item nav-link disabled" href="#">Disabled</a>
-        </div>
-      </div>
-    </nav>
-    <%= yield %>
+          <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+            <% if signed_in? %>
+              <%= link_to "Hayvan Takip Sistemi", animals_path, class:"navbar-brand" %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item <%= active_class(cows_path) %>">
+                <%= link_to "İnekler", cows_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item <%= active_class(calves_path) %>">
+                <%= link_to "Danalar", calves_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item <%= active_class(bullocks_path) %>">
+                <%= link_to "Tosunlar", bullocks_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item <%= active_class(no_exits_path) %>">
+                <%= link_to "Satılanlar/Ölenler", no_exits_path, class:"nav-link" %>
+              </li>
+            </ul>
+            <%= link_to "Ayarlar",  edit_user_registration_path(current_user), class:"nav-link" %>
+            <%= link_to "Çıkış Yap",  destroy_user_session_path, class:"btn btn-light", method: :delete %>
+          </div>
+          <% else %>
+            <ul class="navbar-nav mr-auto navbar-brand">
+              <li class="nav-item">
+              Güleç Tarım ve Hayvancılık - Hayvan Takip Sistemi
+              </li>
+            </ul>
+            <% end %>
+        </nav>
+    <div class="container">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <% flash.each do |key, value| %>
+            <div class="<%= flash_class(key) %>">
+              <%= value %>
+            </div>
+          <% end %>
+          <%= yield %>
+    </div>
   </body>
 </html>

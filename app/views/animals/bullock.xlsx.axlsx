@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+
+title = wb.styles.add_style(:bg_color => "FEE94F00", :fg_color=>"#FFFFFF00", :sz=>18,  :border=> {:style => :thin, :color => "FEE94F00"})
+
+wb.add_worksheet(name: "Tosunlar") do |sheet|
+    sheet.add_row ["Küpe No", "Adı", "Durumu", "Türü", "Doğum Tarihi", "Cinsiyeti", "Koğuşma Tarihi", "Annesi'nin Küpe No"], style: title
+    @animals.each do |animal|
+      sheet.add_row [animal.earring_no, animal.name, animal.state, animal.animal_type, animal.birthdate, animal.gender, animal.mating_date, animal.mother_earring_no]
+  end
+end

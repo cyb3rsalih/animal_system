@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'animal/show'
-  get 'animal/new'
-  get 'animal/index'
-  root to: "animal#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root to: "animals#index"
+  resources :animals
+  get 'inekler', to: 'animals#cow', as: :cows
+  get 'tosunlar', to: 'animals#bullock', as: :bullocks
+  get 'danalar', to: 'animals#calf', as: :calves
+  get 'mevcut_olmayanlar', to: 'animals#no_exist', as: :no_exits
 end

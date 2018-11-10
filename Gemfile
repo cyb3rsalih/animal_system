@@ -28,7 +28,15 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'jquery-rails'
 gem 'popper_js', '~> 1.14.3'
-
+gem "paperclip", "~> 6.0.0"
+gem 'devise'
+gem "nested_form"
+gem 'faker'
+gem 'rubyzip'
+gem 'axlsx', '2.1.0.pre'
+gem 'axlsx_rails'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
