@@ -1,0 +1,40 @@
+<h1>Tosunlar</h1>
+
+<div class="row">
+  <div class="col new-animal">
+    <%= link_to 'Excell İndir', bullocks_path(format: :xlsx), class:"btn btn-danger" %>
+    <%= link_to "Yeni Hayvan Ekle", new_animal_path, class:"btn btn-success" %>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col">
+        <table class="table table-hover table-bordered">
+            <thead class="table-warning">
+            <tr>
+                <th scope="col">Küpe No</th>
+                <th scope="col">Adı</th>
+                <th scope="col">Resmi</th>
+                <th scope="col">Durumu</th>
+                <th scope="col">Doğum Tarihi</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% @animals.each do |animal| %>
+                <% cache animal do %>
+                    <tr data-link="<%= animal_path(animal) %>" >
+                    <td><%= animal.earring_no %></td>
+                    <td><%= animal.name %></td>
+                    <td><%= image_tag(animal.image.url(:small)) %></td>
+                    <td><%= animal.state %></td>
+                    <td><%= animal.birthdate %></td>
+                    </tr>
+                <% end %>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%= render 'paginate' %>

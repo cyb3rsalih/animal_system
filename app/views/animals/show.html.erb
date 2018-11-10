@@ -1,0 +1,61 @@
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Hayvan'ın Bilgileri</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Küpe No</th>
+      <td><%= @animal.earring_no %></td>
+    </tr>
+    <tr>
+      <th scope="row">Adı</th>
+      <td><%= @animal.name %></td>
+    </tr>
+    <tr>
+      <th scope="row">Resim</th>
+      <td><%= image_tag(@animal.image.url(:medium)) %></td>
+    </tr>
+    <tr>
+      <th scope="row">Cinsiyeti</th>
+      <td><%= @animal.gender %></td>
+    </tr>
+    <tr>
+      <th scope="row">Türü</th>
+      <td><%= @animal.animal_type %></td>
+    </tr>
+    <tr>
+      <th scope="row">Durum</th>
+      <td><%= @animal.state %></td>
+    </tr>
+    <tr>
+      <th scope="row">Doğum Tarihi</th>
+      <td><%= @animal.birthdate %></td>
+    </tr><tr>
+      <th scope="row">Ana Küpe No</th>
+      <td><%= @animal.mother_earring_no %></td>
+    </tr><tr>
+      <th scope="row">Annesi'nin Resmi</th>
+      <td><%= image_tag(@animal.mother_image.url(:medium)) %></td>
+    </tr>
+    <tr>
+      <th scope="row">Koğuştuğu Tarih</th>
+      <td><%= @animal.mating_date %></td>
+    </tr>
+    <tr>
+      <th scope="row">Danaları</th>
+      <td>
+        <% @animal.calves.each do |c| %>
+          <%= image_tag(c.image.url(:medium)) %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "Geri Dön", animals_path, class:"btn btn-info" %>
+<%= link_to "Güncelle", edit_animal_path(@animal), class:"btn btn-warning" %>
+<%= link_to "Sil", animal_path(@animal), method: :delete, data: {confirm: "Kaydı silmek istediğinizde emin misiniz?"}, class:"btn btn-dark  " %>
