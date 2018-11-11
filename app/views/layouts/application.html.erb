@@ -43,14 +43,12 @@
             <% end %>
         </nav>
     <div class="container">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <% flash.each do |key, value| %>
-            <div class="<%= flash_class(key) %>">
-              <%= value %>
-            </div>
-          <% end %>
-          <%= yield %>
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+          <%= value %>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
   </body>
 </html>
