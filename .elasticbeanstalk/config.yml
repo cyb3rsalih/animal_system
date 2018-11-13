@@ -1,0 +1,20 @@
+branch-defaults:
+  codeCommit:
+    environment: null
+    group_suffix: null
+  master:
+    environment: null
+global:
+  application_name: animal-system
+  branch: codeCommit
+  default_ec2_keyname: aws-eb
+  default_platform: Ruby 2.4 (Puma)
+  default_region: eu-west-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  repository: animal-system
+  sc: git
+  workspace_type: Application
