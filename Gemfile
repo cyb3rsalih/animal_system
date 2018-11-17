@@ -37,8 +37,8 @@ gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'aws-sdk', '~> 2.3'
+gem 'fog-aws'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
