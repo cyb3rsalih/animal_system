@@ -37,7 +37,6 @@ gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
-gem 'aws-sdk', '~> 2.3'
 gem 'aws-sdk-s3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
