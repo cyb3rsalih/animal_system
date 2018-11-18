@@ -1,5 +1,5 @@
 <div class="form-border">
-<%= nested_form_for (@animal, multipart: true) do |f| %>
+<%= nested_form_for @animal, html: { multipart: true } do |f| %>
     <% if @animal.errors.any? %>
     <div id="error_explanation">
         <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>

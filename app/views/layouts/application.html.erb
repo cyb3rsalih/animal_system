@@ -12,7 +12,7 @@
   <body>
           <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
             <% if signed_in? %>
-              <%= link_to "Hayvan Takip Sistemi", animals_path, class:"navbar-brand" %>
+              <%= link_to "Takip Sistemi", animals_path, class:"navbar-brand" %>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,6 +29,12 @@
               </li>
               <li class="nav-item <%= active_class(no_exits_path) %>">
                 <%= link_to "Satılanlar/Ölenler", no_exits_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item <%= active_class(no_exits_path) %>">
+                <%= link_to "Aşılar", no_exits_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item <%= active_class(no_exits_path) %>">
+                <%= link_to "Harcamalar", no_exits_path, class:"nav-link" %>
               </li>
             </ul>
             <%= link_to "Ayarlar",  edit_user_registration_path(current_user), class:"nav-link" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_151429) do
+ActiveRecord::Schema.define(version: 2018_11_18_111448) do
 
 # Could not dump table "animals" because of following StandardError
 #   Unknown type '' for column 'animal_type'
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2018_11_03_151429) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vaccinates", force: :cascade do |t|
+    t.string "name"
+    t.integer "animal_id"
+    t.date "vaccinate_date"
+    t.index ["animal_id"], name: "index_vaccinates_on_animal_id"
   end
 
 end

@@ -6,6 +6,3 @@ module Paperclip
     end
   end
 end
-
-Paperclip::Attachment.default_options[:url] = 'https://s3.us-east-2.amazonaws.com/picture-hayvan/'
-Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
