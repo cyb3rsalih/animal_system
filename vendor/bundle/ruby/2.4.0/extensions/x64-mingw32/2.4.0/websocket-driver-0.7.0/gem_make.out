@@ -1,5 +1,5 @@
 current directory: C:/Users/ebugl/animal-system/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
-C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181117-8536-151i0vg.rb extconf.rb
+C:/Ruby24-x64/bin/ruby.exe -r ./siteconf20181118-4748-18hicxl.rb extconf.rb
 creating Makefile
 
 current directory: C:/Users/ebugl/animal-system/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
@@ -13,4 +13,4 @@ linking shared-object websocket_mask.so
 
 current directory: C:/Users/ebugl/animal-system/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.7.0/ext/websocket-driver
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20181117-8536-1xqduyk
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20181118-4748-b7tl7l
