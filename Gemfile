@@ -30,7 +30,6 @@ gem 'popper_js', '~> 1.14.3'
 gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip'
 gem 'devise'
 gem "nested_form"
-gem 'faker'
 gem 'rubyzip'
 gem 'axlsx', '2.1.0.pre'
 gem 'axlsx_rails'
@@ -38,6 +37,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
 gem 'aws-sdk', '< 2.0'
 gem 'aws-sdk-s3'
+gem "font-awesome-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -51,8 +51,10 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+  gem 'faker'
   gem 'web-console', '>= 3.3.0'
   gem 'sqlite3'
+  gem 'annotate'
 end
 
 group :production do

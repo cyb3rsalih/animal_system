@@ -11,9 +11,43 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
   end
 
-  def index
-    @animals = Animal.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+  def destroy_scion
+    animal_id = params[:id]
+    scion_id = params[:scion_id]
+    if AnimalScion.exists?(scion_id: scion_id, animal_id: animal_id)
+      @animal_scion = AnimalScion.find_by(scion_id: scion_id, animal_id: animal_id)
+      if @animal_scion.destroy
+        flash[:success] = "Aşı kaydı başarıyla silindi."
+        redirect_to animal_path
+      else
+        flash[:error] = "Bir hata meydana geldi. Lütfen tekrar deneyin."
+        redirect_to animal_path
+      end
+    else
+      flash[:error] = "Bir hata meydana geldi. Lütfen tekrar deneyin."
+      head :no_content
+      redirect_to animal_path
+    end
+  end
 
+  def search
+    if request.post?
+        earring_no = params[:earring_no]
+      if Animal.exists?(earring_no: earring_no)
+        @animal = Animal.find_by(earring_no: earring_no)
+        flash[:success] = "Bir kayıt bulundu"
+        flash[:error] = nil
+      else
+        flash[:success] = nil
+        flash[:error] = "Herhangi bir kayıt bulunamadı."
+      end
+    else
+    end
+  end
+
+  def index
+    @animals = Animal.where.not(animal_type: 'yok').order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+    animals_count
     respond_to do |format|
       format.html
       format.xlsx {
@@ -34,6 +68,7 @@ class AnimalsController < ApplicationController
   end
 
   def update
+    p params['calves_attributes']
     @animal = Animal.find(params[:id])
     if(@animal.update(animal_params))
       redirect_to @animal
@@ -56,6 +91,7 @@ class AnimalsController < ApplicationController
 
   def cow
     @animals = Animal.inek.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+    animals_count
     respond_to do |format|
       format.html
       format.xlsx {
@@ -66,6 +102,7 @@ class AnimalsController < ApplicationController
 
   def bullock
     @animals = Animal.tosun.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+    animals_count
     respond_to do |format|
       format.html
       format.xlsx {
@@ -76,6 +113,7 @@ class AnimalsController < ApplicationController
 
   def calf
     @animals = Animal.dana.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+    animals_count
     respond_to do |format|
       format.html
       format.xlsx {
@@ -86,6 +124,7 @@ class AnimalsController < ApplicationController
 
   def no_exist
     @animals = Animal.yok.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
+    animals_count
     respond_to do |format|
       format.html
       format.xlsx {
@@ -97,9 +136,10 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :animal_type, :image, :mother_image, :state, :earring_no, :picture, :mating_date, :gender, :mother_earring_no, :birthdate, :picture_of_mother, calves_attributes: [:id, :image, :_destroy])
+    params.require(:animal).permit(:name, :animal_type, :image, :mother_image, :state, :earring_no, :picture, :mating_date, :gender, :mother_earring_no, :birthdate, :picture_of_mother, calves_attributes: [:id, :image, :info, :_destroy])
   end
 
-  def paginate
+  def animals_count
+    @animals_count = @animals.count
   end
 end

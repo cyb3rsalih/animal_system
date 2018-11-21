@@ -1,5 +1,28 @@
+# == Schema Information
+#
+# Table name: calves
+#
+#  id                  :integer          not null, primary key
+#  avatar_content_type :string
+#  avatar_file_name    :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  image_content_type  :string
+#  image_file_name     :string
+#  image_file_size     :integer
+#  image_updated_at    :datetime
+#  info                :string
+#  animal_id           :integer
+#
+# Indexes
+#
+#  index_calves_on_animal_id  (animal_id)
+#
+
 class Calf < ApplicationRecord
     belongs_to :animal
+    validates :info, presence: true
+
     has_attached_file :image,
     storage: :s3,
         s3_credentials: {

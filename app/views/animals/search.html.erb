@@ -1,5 +1,23 @@
-<h2>Hayvan'ın Bilgileri</h2>
-<table class="table table-bordered">
+<div class="row">
+  <div class="col">
+<div class="form-border">
+    <div class="form-group search ">
+    <h2>Hayvan Arama</h2>
+        <%= form_tag(hayvan_ara_path) do %>
+            <small id="KupeHelp" class="form-text text-muted">Yanlızca küpe numarası ile arama yapabilirsiniz</small>
+            <%= number_field_tag :earring_no, class:"form-control", placeholder:"Küpe Numarasını Girin" %>
+            <%= submit_tag 'Ara', class: "btn btn-success" %>
+        <% end %>
+    </div>
+</div>
+</div>
+</div>
+
+<% if @animal.present? %>
+    <div class="form-border">
+        <div class="form-group search ">
+            <h2>Bulunan Kayıt</h2>
+      <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -70,7 +88,6 @@
     </tr>
   </tbody>
 </table>
-
-<%= link_to "Geri Dön", animals_path, class:"btn btn-info" %>
-<%= link_to "Güncelle", edit_animal_path(@animal), class:"btn btn-warning" %>
-<%= link_to "Sil", animal_path(@animal), method: :delete, data: {confirm: "Kaydı silmek istediğinizde emin misiniz?"}, class:"btn btn-dark  " %>
+        </div>
+    </div>
+<% end %>

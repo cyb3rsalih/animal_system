@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_111448) do
+ActiveRecord::Schema.define(version: 2018_11_20_213029) do
+
+  create_table "animal_scions", force: :cascade do |t|
+    t.integer "animal_id"
+    t.integer "scion_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["animal_id"], name: "index_animal_scions_on_animal_id"
+    t.index ["scion_id"], name: "index_animal_scions_on_scion_id"
+  end
 
 # Could not dump table "animals" because of following StandardError
 #   Unknown type '' for column 'animal_type'
@@ -25,7 +34,15 @@ ActiveRecord::Schema.define(version: 2018_11_18_111448) do
     t.string "image_content_type"
     t.integer "image_file_size"
     t.datetime "image_updated_at"
+    t.string "info"
     t.index ["animal_id"], name: "index_calves_on_animal_id"
+  end
+
+  create_table "scions", force: :cascade do |t|
+    t.string "name"
+    t.date "scion_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,13 +55,6 @@ ActiveRecord::Schema.define(version: 2018_11_18_111448) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "vaccinates", force: :cascade do |t|
-    t.string "name"
-    t.integer "animal_id"
-    t.date "vaccinate_date"
-    t.index ["animal_id"], name: "index_vaccinates_on_animal_id"
   end
 
 end

@@ -1,0 +1,2 @@
+module ScionHelper
+end

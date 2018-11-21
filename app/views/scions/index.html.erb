@@ -1,0 +1,74 @@
+<h2>Aşı Ekle</h2>
+<div class="form-border">
+    <%= form_for :scion, url: { action: "create" }, as: :post do |f| %>
+        <div class="form-group row ">
+            <%= label_tag "Aşı Adı" %>
+            <%= f.text_field :name, class:"form-control", placeholder:"Aşı Adı"  %>
+            <small id="ScionHelp" class="form-text text-muted">Aşı adının doldurulması zorunludur.</small>
+        </div>
+        <div class="form-group row ">
+            <%= label_tag "Aşı Tarihi" %>
+            <%= f.date_field :scion_date, class:"form-control" %>
+            <small id="ScionHelp" class="form-text text-muted">Aşı tarihinin doldurulması zorunludur.</small>
+        </div>
+        <div class="form-group row ">
+
+        <% for animal in Animal.animal_types %>
+            <%= label_tag animal[0] %>
+            <%= check_box_tag "animal_types[]", animal[0] %>
+            <% end %>
+        </div>
+
+            <p>
+                <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Küpe Numarası İle Hayvan Ekle
+                </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <small id="ScionHelp" class="form-text text-muted">Aralarında yanlızca bir boşluk bırakarak küpe numaralarını giriniz: 145632 125478 25698 gibi</small>
+                    <%= text_area_tag :kupe_no%>
+                </div>
+            </div>
+        <%= f.submit "Kaydet", class: "btn btn-success" %>
+    <% end %>
+</div>
+
+<h2>Geçmiş Aşı Kayıtları</h2>
+<div class="form-border">
+    <% @scions.each do |scion| %>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#<%= scion.name.delete(' ') %><%= scion.id %>" aria-expanded="true" aria-controls="collapseOne">
+                            <h5><%= scion.name %> - <%= scion.scion_date.strftime("%d/%m/%Y") %></h5>
+                        </button>
+                        <%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, asi_sil_path(scion), style: "float: right", method: :delete, data: {confirm: "Kaydı silmek istediğinizde emin misiniz?"} %>
+                    </h5>
+                </div>
+
+                <div id="<%= scion.name.delete(' ') %><%= scion.id %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    <div>Etkilenen Hayvan Sayısı: <strong><%= scion.animals.count %></strong></div>
+                    <h4>Aşı Yapılan Hayvanlar </h4>
+                    <% scion.animals.each do |animal| %>
+                        <% if animal.present? %>
+                            <% case animal.animal_type %>
+                                <% when 'inek' %>
+                                   <div>İnek: <%= link_to animal.earring_no, animal_path(animal) %></div>
+                                <% when 'tosun' %>
+                                    <div>Tosun: <%= link_to animal.earring_no, animal_path(animal) %></div>
+                                <% when 'dana' %>
+                                    <div>Dana: <%= link_to animal.earring_no, animal_path(animal) %></div>
+                                <% when 'yok' %>
+                                    <div>Satılan ya da Ölen: <%= link_to animal.earring_no, animal_path(animal) %></div>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

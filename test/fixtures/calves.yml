@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: calves
+#
+#  id                  :integer          not null, primary key
+#  avatar_content_type :string
+#  avatar_file_name    :string
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  image_content_type  :string
+#  image_file_name     :string
+#  image_file_size     :integer
+#  image_updated_at    :datetime
+#  info                :string
+#  animal_id           :integer
+#
+# Indexes
+#
+#  index_calves_on_animal_id  (animal_id)
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined. If you add columns to the

@@ -1,6 +1,7 @@
-<h2>Bütün Hayvanlar</h2>
 <div class="row">
+  <h2>Bütün Hayvanlar</h2>
   <div class="col new-animal">
+<div>Toplam Hayvan Sayısı: <strong><%= @animals_count %></strong></div>
     <%= link_to 'Excell İndir', animals_path(format: :xlsx), class:"btn btn-danger" %>
     <%= link_to "Yeni Hayvan Ekle", new_animal_path, class:"btn btn-success" %>
   </div>
@@ -22,12 +23,12 @@
         <% @animals.each do |animal| %>
           <% cache animal do %>
             <tr data-link="<%= animal_path(animal) %>" >
-            <td><%= animal.earring_no %></td>
-            <td><%= animal.name %></td>
-            <td><%= image_tag(animal.image.url(:small)) %></td>
-            <td><%= animal.state %></td>
-            <td><%= animal.birthdate %></td>
-            <td><%= image_tag(animal.mother_image.url(:small)) %></td>
+              <td><%= animal.earring_no %></td>
+              <td><%= animal.name %></td>
+              <td><%= image_tag(animal.image.url(:small)) %></td>
+              <td><%= animal.state %></td>
+              <td><%= animal.birthdate %></td>
+              <td><%= image_tag(animal.mother_image.url(:small)) %></td>
             </tr>
           <% end %>
         <% end %>
