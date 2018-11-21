@@ -78,11 +78,13 @@
     <tr>
       <th scope="row">Aşıları</th>
       <td>
-        <% @animal.scions.each do |scion| %>
-          <div>
-            <%= scion.name %> - <%= scion.scion_date.strftime("%d/%m/%Y") %>
-            <%= link_to '<i class="fa fa-trash"></i>'.html_safe, animal_scions_path(@animal, scion), method: :delete, data: {confirm: "Kaydı silmek istediğinizden emin misiniz?"}%>
-          </div>
+        <% if @animal.scions.present? %>
+            <% @animal.scions.each do |scion| %>
+            <div>
+              <%= scion.name %> - <%= scion.scion_date.strftime("%d/%m/%Y") %>
+              <%= link_to '<i class="fa fa-trash"></i>'.html_safe, animal_scions_path(@animal, scion), method: :delete, data: {confirm: "Kaydı silmek istediğinizden emin misiniz?"}%>
+            </div>
+          <% end %>
         <% end %>
       </td>
     </tr>

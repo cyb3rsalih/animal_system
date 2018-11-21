@@ -36,6 +36,7 @@
 
 <h2>Geçmiş Aşı Kayıtları</h2>
 <div class="form-border">
+    <% if @scions.present? %>
     <% @scions.each do |scion| %>
         <div id="accordion">
             <div class="card">
@@ -72,3 +73,4 @@
         </div>
     <% end %>
 </div>
+<% end %>
