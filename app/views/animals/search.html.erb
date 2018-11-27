@@ -5,8 +5,8 @@
     <h2>Hayvan Arama</h2>
         <%= form_tag(hayvan_ara_path) do %>
             <small id="KupeHelp" class="form-text text-muted">Yanlızca küpe numarası ile arama yapabilirsiniz</small>
-            <%= number_field_tag :earring_no, class:"form-control", placeholder:"Küpe Numarasını Girin" %>
-            <%= submit_tag 'Ara', class: "btn btn-success" %>
+            <%= text_field_tag :earring_no, "", class:"form-control", placeholder:"Küpe Numarasını Girin" %>
+            <%= submit_tag 'Hayvan Ara', class: "btn btn-success" %>
         <% end %>
     </div>
 </div>

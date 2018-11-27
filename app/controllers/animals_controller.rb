@@ -50,8 +50,8 @@ class AnimalsController < ApplicationController
     animals_count
     respond_to do |format|
       format.html
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename='#{DateTime.now.to_date}-gulec-tarim-butun-hayvanlar.xlsx'"
+      format.pdf {
+        render pdf: "#{DateTime.now.to_date}-gulec-tarim-butun-hayvanlar", page_size: 'A2'
       }
     end
   end

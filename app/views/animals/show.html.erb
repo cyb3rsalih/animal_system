@@ -22,7 +22,13 @@
     <tr>
     <tr>
       <th class="strong" scope="row">Doğum Tarihi</th>
-      <td><%= @animal.birthdate %></td>
+      <td>
+        <% if @animal.birthdate.present? %>
+          <%= @animal.birthdate.strftime("%d/%m/%Y") %>
+          <% else %>
+          <%= @animal.birthdate %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th class="strong" scope="row">Hayvan Türü</th>
@@ -45,7 +51,13 @@
     </tr>
     <tr>
       <th class="strong" scope="row">Koğuştuğu Tarih</th>
-      <td><%= @animal.mating_date %></td>
+      <td>
+        <% if @animal.mating_date.present? %>
+          <%= @animal.mating_date.strftime("%d/%m/%Y") %>
+          <% else %>
+          <%= @animal.mating_date %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th class="strong" scope="row">Annesi'nin Resmi</th>
@@ -65,7 +77,17 @@
             </tr>
             <tr>
               <th scope="row">Doğum Tarihi</th>
-              <td><%= c.birthdate %></td>
+              <td>
+                <% if c.birthdate.present? %>
+                  <%= c.birthdate.strftime("%d/%m/%Y") %>
+                  <% else %>
+                  <%= c.birthdate %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Bilgisi</th>
+              <td><%= c.info %></td>
             </tr>
             <tr>
               <th scope="row">Resmi</th>

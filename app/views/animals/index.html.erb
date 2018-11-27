@@ -2,7 +2,7 @@
   <h2>Bütün Hayvanlar</h2>
   <div class="col new-animal">
 <div>Toplam Hayvan Sayısı: <strong><%= @animals_count %></strong></div>
-    <%= link_to 'Excell İndir', animals_path(format: :xlsx), class:"btn btn-danger" %>
+    <%= link_to 'PDF İndir', animals_path(format: :pdf), class:"btn btn-danger", target: "_blank" %>
     <%= link_to "Yeni Hayvan Ekle", new_animal_path, class:"btn btn-success" %>
   </div>
 </div>
@@ -26,7 +26,13 @@
             <td><%= animal.earring_no %></td>
             <td><%= image_tag(animal.image.url(:small)) %></td>
             <td><%= animal.name %></td>
-            <td><%= animal.birthdate %></td>
+            <td>
+            <% if animal.birthdate.present? %>
+              <%= animal.birthdate.strftime("%d/%m/%Y") %>
+              <% else %>
+              <%= animal.birthdate %>
+            <% end %>
+            </td>
             <td><%= animal.race %></td>
             <td><%= animal.state %></td>
             <td><%= image_tag(animal.mother_image.url(:small)) %></td>

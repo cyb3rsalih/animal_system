@@ -39,6 +39,8 @@ gem 'aws-sdk', '< 2.0'
 gem 'aws-sdk-s3'
 gem "font-awesome-rails"
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
