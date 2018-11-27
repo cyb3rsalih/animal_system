@@ -13,10 +13,12 @@
             <thead class="table-warning">
             <tr>
                 <th scope="col">Küpe No</th>
-                <th scope="col">Adı</th>
                 <th scope="col">Resmi</th>
-                <th scope="col">Durumu</th>
                 <th scope="col">Doğum Tarihi</th>
+                <th scope="col">Adı</th>
+                <th scope="col">Irkı</th>
+                <th scope="col">Durumu</th>
+                <th scope="col">Annesi'nin Resmi</th>
             </tr>
             </thead>
             <tbody>
@@ -25,10 +27,12 @@
                 <% cache animal do %>
                     <tr data-link="<%= animal_path(animal) %>" >
                     <td><%= animal.earring_no %></td>
-                    <td><%= animal.name %></td>
                     <td><%= image_tag(animal.image.url(:small)) %></td>
-                    <td><%= animal.state %></td>
                     <td><%= animal.birthdate %></td>
+                    <td><%= animal.name %></td>
+                    <td><%= animal.race %></td>
+                    <td><%= animal.state %></td>
+                    <td><%= image_tag(animal.mother_image.url(:small)) %></td>
                     </tr>
                 <% end %>
             <% end %>

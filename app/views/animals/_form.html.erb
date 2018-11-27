@@ -12,63 +12,80 @@
     </div>
     <% end %>
     <div class="form-group row ">
-        <%= label_tag "Küpe No" %>
-        <%= f.number_field :earring_no, class:"form-control", placeholder:"Küpe Numarasını Girin" %>
-        <small id="KupeHelp" class="form-text text-muted">Hayvan'ın küpe numarası girilmesi zorunludur.</small>
+        <label class= "strong" for="exampleInputKupeNo1">Küpe No</label>
+        <%= f.text_field :earring_no, class:"form-control" %>
+        <small id="KupeHelp" class="form-text text-muted">Hayvan'ın küpe numarası girilmesi zorunludur. Küpe no: TR000010000123 gibi</small>
     </div>
 
     <div class="form-group row">
-        <label for="exampleInputKupeNo1">Adı</label>
+        <label class= "strong">Resmi</label>
+        <%= f.file_field :image, id: :photo_image, placeholder:"Hayvan'ın Resmi", class: "form-control-file" %>
+    </div>
+
+    <div class="form-group row">
+        <label class= "strong" for="exampleInputKupeNo1">Adı</label>
         <%= f.text_field :name, class:"form-control", placeholder:"Hayvan'ın Adı" %>
     </div>
 
     <div class="form-group row">
-        <label for="inputState">Türü</label><br/>
+        <label class= "strong" for="inputState">Türü</label>
+        </div>
+    <div class="form-group row">
         <%= f.select :animal_type, Animal.animal_types.keys.map { |w| [w.humanize, w]}, class:"form-control", id:"inputType" %>
     </div>
 
     <div class="form-group row">
-        <label>Durum</label>
-        <%= f.text_field :state, class:"form-control", placeholder:"Hayvan'ın Durumu(nereye satıldı, neden öldü vb)" %>
+        <label class= "strong">Irkı</label>
+        <%= f.text_field :race, class:"form-control", placeholder:"Simenter, montofon vb" %>
     </div>
 
     <div class="form-group row">
-        <label>Resmi</label>
-        <%= f.file_field :image, id: :photo_image, placeholder:"Hayvan'ın Resmi", class: "form-control-file" %>
+        <label class= "strong">Durumu</label>
+        <%= f.text_field :state, class:"form-control", placeholder:"Hayvan'ın Durumu(sağ, satıldığı yer, neden öldüğü vb)" %>
     </div>
 
+    <div class="form-group row">
+        <label class= "strong" >Cinsiyeti</label>
+    </div>
     <div class="form-check row">
-        <%= label_tag "Cinsiyeti" %><br/>
-            <%= f.radio_button :gender, "Dişi", class: "form-check-input" %><%= label_tag "Dişi" %> <br/>
-            <%= f.radio_button :gender, "Erkek", class: "form-check-input" %><%= label_tag "Erkek" %>
+        <%= f.radio_button :gender, "Dişi", class: "form-check-input" %><%= label_tag "Dişi" %> <br/>
+        <%= f.radio_button :gender, "Erkek", class: "form-check-input" %><%= label_tag "Erkek" %>
     </div>
 
 
     <div class="form-group row">
-        <label>Doğum Tarihi</label>
+        <label class= "strong">Doğum Tarihi</label>
         <%= f.date_field :birthdate, class:"form-control", placeholder:"Hayvan'ın Doğum Tarihi" %>
     </div>
 
     <div class="form-group row">
-        <label>Ana Küpe No</label>
-        <%= f.number_field :mother_earring_no, class:"form-control", placeholder:"Hayvan'ın Annesi'nin Küpe Numarası" %>
+        <label class= "strong">Ana Küpe No</label>
+        <%= f.text_field :mother_earring_no, class:"form-control" %>
+        <small id="KupeHelp" class="form-text text-muted">Küpe no: TR000010000123 gibi</small>
     </div>
 
     <div class="form-group row">
-        <label>Annesi'nin Resmi</label>
+        <label class= "strong">Annesi'nin Resmi</label>
         <%= f.file_field :mother_image, id: :photo_image, placeholder:"Hayvan'ın Annesi'nin Resmi", class: "form-control-file" %>
     </div>
 
     <div class="form-group row">
-        <label>Koğuştuğu Tarihi</label>
+        <label class= "strong">Koğuştuğu Tarihi</label>
         <%= f.date_field :mating_date, class:"form-control", placeholder:"Hayvan'ın Koğuştuğu Tarihi" %>
     </div>
-
+    <div class="form-group row">
+        <label class= "strong">Dana Bilgileri</label>
+    </div>
     <div class="form-group row">
         <%= f.fields_for :calves do |cf| %>
             <div>
+                <strong>KüpeNo: </strong>
+                <%= cf.text_field :earring_no, class:"form-width" %>
+                <strong>Doğum T.:</strong>
+                <%= cf.date_field :birthdate, class:"form-width small-input" %>
+                <strong>Bilgi:</strong>
+                <%= cf.text_field :info, placeholder:"elif, 1. kız, siyah düve vb", class:"form-width small-input" %>
                 <%= cf.file_field :image %>
-                <%= cf.text_field :info %>
                 <%= cf.link_to_remove "Sil" %>
             <div>
         <% end %>

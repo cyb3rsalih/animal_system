@@ -2,67 +2,89 @@
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Hayvan'ın Bilgileri</th>
+      <th class="strong" scope="col">#</th>
+      <th class="strong" scope="col">Hayvan'ın Bilgileri</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">Küpe No</th>
+      <th class="strong" scope="row">Küpe No</th>
       <td><%= @animal.earring_no %></td>
     </tr>
     <tr>
-      <th scope="row">Adı</th>
-      <td><%= @animal.name %></td>
-    </tr>
-    <tr>
-      <th scope="row">Resim</th>
+      <th class="strong" scope="row">Resim</th>
       <td><%= image_tag(@animal.image.url(:medium)) %></td>
     </tr>
     <tr>
-      <th scope="row">Cinsiyeti</th>
-      <td><%= @animal.gender %></td>
+      <th class="strong" scope="row">Adı</th>
+      <td><%= @animal.name %></td>
     </tr>
     <tr>
-      <th scope="row">Türü</th>
+    <tr>
+      <th class="strong" scope="row">Doğum Tarihi</th>
+      <td><%= @animal.birthdate %></td>
+    </tr>
+    <tr>
+      <th class="strong" scope="row">Hayvan Türü</th>
       <td><%= @animal.animal_type %></td>
     </tr>
     <tr>
-      <th scope="row">Durum</th>
+      <th class="strong" scope="row">Irkı</th>
       <td><%= @animal.state %></td>
     </tr>
     <tr>
-      <th scope="row">Doğum Tarihi</th>
-      <td><%= @animal.birthdate %></td>
-    </tr><tr>
-      <th scope="row">Ana Küpe No</th>
-      <td><%= @animal.mother_earring_no %></td>
-    </tr><tr>
-      <th scope="row">Annesi'nin Resmi</th>
-      <td><%= image_tag(@animal.mother_image.url(:medium)) %></td>
+      <th class="strong" scope="row">Durumu</th>
+      <td><%= @animal.state %></td>
     </tr>
     <tr>
-      <th scope="row">Koğuştuğu Tarih</th>
+      <th class="strong" scope="row">Cinsiyeti</th>
+      <td><%= @animal.gender %></td>
+    </tr>
+      <th class="strong" scope="row">Ana Küpe No</th>
+      <td><%= @animal.mother_earring_no %></td>
+    </tr>
+    <tr>
+      <th class="strong" scope="row">Koğuştuğu Tarih</th>
       <td><%= @animal.mating_date %></td>
     </tr>
     <tr>
-      <th scope="row">Danaları</th>
+      <th class="strong" scope="row">Annesi'nin Resmi</th>
+      <td><%= image_tag(@animal.mother_image.url(:medium)) %></td>
+    </tr>
+    <tr>
+      <th class="strong" scope="row">Danaları</th>
       <td>
-        <% @animal.calves.each do |c| %>
-          <div>
-            <%= image_tag(c.image.url(:medium)) %>
-            <strong><%= c.info %></strong>
-          </div>
-          <br/>
-        <% end %>
+      <% calf_count = 0 %>
+    <% @animal.calves.each do |c| %>
+        <div class="strong"><%= calf_count = calf_count +1 %>. Dana</div>
+      <table class="table">
+        <tbody>
+            <tr>
+            <th scope="row">Küpe No</th>
+              <td><%= c.earring_no %></td>
+            </tr>
+            <tr>
+              <th scope="row">Doğum Tarihi</th>
+              <td><%= c.birthdate %></td>
+            </tr>
+            <tr>
+              <th scope="row">Resmi</th>
+              <td><%= image_tag(c.image.url(:medium)) %></td>
+            </tr>
+        </tbody>
+      </table>
+      <hr/>
+    <% end %>
+
       </td>
     </tr>
     <tr>
-      <th scope="row">Aşıları</th>
+      <th class="strong" scope="row">Aşıları</th>
       <td>
         <% @animal.scions.each do |scion| %>
           <div>
-            <%= scion.name %> - <%= scion.scion_date.strftime("%d/%m/%Y") %>
+          <strong>Aşı Adı: </strong><%= scion.name %>
+          <strong>Tarihi: </strong><%= scion.scion_date.strftime("%d/%m/%Y") %>
             <%= link_to '<i class="fa fa-trash"></i>'.html_safe, animal_scions_path(@animal, scion), method: :delete, data: {confirm: "Kaydı silmek istediğinizden emin misiniz?"}%>
           </div>
         <% end %>

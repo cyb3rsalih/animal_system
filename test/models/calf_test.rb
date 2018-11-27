@@ -7,6 +7,8 @@
 #  avatar_file_name    :string
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  birthdate           :date
+#  earring_no          :string
 #  image_content_type  :string
 #  image_file_name     :string
 #  image_file_size     :integer

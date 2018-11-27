@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_213029) do
+ActiveRecord::Schema.define(version: 2018_11_25_112746) do
 
   create_table "animal_scions", force: :cascade do |t|
     t.integer "animal_id"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2018_11_20_213029) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.string "info"
+    t.string "earring_no"
+    t.date "birthdate"
     t.index ["animal_id"], name: "index_calves_on_animal_id"
   end
 

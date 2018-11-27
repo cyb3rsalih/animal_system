@@ -136,7 +136,7 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :animal_type, :image, :mother_image, :state, :earring_no, :picture, :mating_date, :gender, :mother_earring_no, :birthdate, :picture_of_mother, calves_attributes: [:id, :image, :info, :_destroy])
+    params.require(:animal).permit(:name, :animal_type, :image, :mother_image, :state, :earring_no, :picture, :mating_date, :gender, :mother_earring_no, :birthdate, :picture_of_mother, :race, calves_attributes: [:id, :image, :info, :earring_no, :birthdate, :_destroy])
   end
 
   def animals_count

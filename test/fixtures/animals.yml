@@ -5,14 +5,14 @@
 #  id                        :integer          not null, primary key
 #  animal_type               :
 #  birthdate                 :date
-#  earring_no                :integer
+#  earring_no                :string
 #  gender                    :string
 #  image_content_type        :string
 #  image_file_name           :string
 #  image_file_size           :integer
 #  image_updated_at          :datetime
 #  mating_date               :date
-#  mother_earring_no         :integer
+#  mother_earring_no         :string
 #  mother_image_content_type :string
 #  mother_image_file_name    :string
 #  mother_image_file_size    :integer
@@ -20,6 +20,7 @@
 #  name                      :string
 #  picture                   :string
 #  picture_of_mother         :string
+#  race                      :string
 #  state                     :string
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
