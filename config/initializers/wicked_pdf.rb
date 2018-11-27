@@ -8,8 +8,7 @@
 #
 # https://github.com/mileszs/wicked_pdf/blob/master/README.md
 
-WickedPdf.config = {
-    #:wkhtmltopdf => '/usr/local/bin/wkhtmltopdf',
-    #:layout => "pdf.html",
-    :exe_path => 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe'
-}
+WickedPdf.config ||= {}
+WickedPdf.config.merge!({
+  # your extra configurations here
+})

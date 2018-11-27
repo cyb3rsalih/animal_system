@@ -41,6 +41,7 @@ gem "font-awesome-rails"
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-heroku'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
