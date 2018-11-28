@@ -46,12 +46,11 @@ class AnimalsController < ApplicationController
   end
 
   def index
-    @animals = Animal.where.not(animal_type: 'yok').order(created_at: :desc).paginate(page: params[:page], per_page: 40)
-    animals_count
+    @animals = Animal.where.not(animal_type: 'yok').order(created_at: :asc)
     respond_to do |format|
       format.html
       format.pdf {
-        render pdf: "#{DateTime.now.to_date}-gulec-tarim-butun-hayvanlar", page_size: 'A2'
+        render pdf: "#{DateTime.now.to_date}-butun-hayvanlar.pdf", page_size: 'A2'
       }
     end
   end
@@ -90,45 +89,41 @@ class AnimalsController < ApplicationController
   end
 
   def cow
-    @animals = Animal.inek.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
-    animals_count
+    @animals = Animal.inek.order(created_at: :asc)
     respond_to do |format|
       format.html
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename='#{DateTime.now.to_date}-inekler.xlsx'"
+      format.pdf {
+        render pdf: "#{DateTime.now.to_date}-inekler.pdf", page_size: 'A2'
       }
     end
   end
 
   def bullock
-    @animals = Animal.tosun.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
-    animals_count
+    @animals = Animal.tosun.order(created_at: :asc)
     respond_to do |format|
       format.html
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename='#{DateTime.now.to_date}-tosunlar.xlsx'"
+      format.pdf {
+        render pdf: "#{DateTime.now.to_date}-tosunlar.pdf", page_size: 'A2'
       }
     end
   end
 
   def calf
-    @animals = Animal.dana.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
-    animals_count
+    @animals = Animal.dana.order(created_at: :asc)
     respond_to do |format|
       format.html
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename='#{DateTime.now.to_date}-danalar.xlsx'"
+      format.pdf {
+        render pdf: "#{DateTime.now.to_date}-danalar.pdf", page_size: 'A2'
       }
     end
   end
 
   def no_exist
-    @animals = Animal.yok.order(created_at: :desc).paginate(page: params[:page], per_page: 40)
-    animals_count
+    @animals = Animal.yok.order(created_at: :asc)
     respond_to do |format|
       format.html
-      format.xlsx {
-        response.headers['Content-Disposition'] = "attachment; filename='#{DateTime.now.to_date}-varolmayanlar.xlsx'"
+      format.pdf {
+        render pdf: "#{DateTime.now.to_date}-satilan-olenler", page_size: 'A2'
       }
     end
   end

@@ -1,7 +1,7 @@
 <div class="row">
   <h2>Bütün Hayvanlar</h2>
   <div class="col new-animal">
-<div>Toplam Hayvan Sayısı: <strong><%= @animals_count %></strong></div>
+<div>Toplam Hayvan Sayısı: <strong><%= @animals.count %></strong></div>
     <%= link_to 'PDF İndir', animals_path(format: :pdf), class:"btn btn-danger", target: "_blank" %>
     <%= link_to "Yeni Hayvan Ekle", new_animal_path, class:"btn btn-success" %>
   </div>
@@ -11,6 +11,7 @@
     <table class="table table-hover table-bordered">
       <thead class="table-warning">
         <tr>
+          <th>#</th>
           <th scope="col">Küpe No</th>
           <th scope="col">Resmi</th>
           <th scope="col">Adı</th>
@@ -21,8 +22,10 @@
         </tr>
       </thead>
       <tbody>
+        <% animal_count = 0 %>
         <% @animals.each do |animal| %>
-          <tr data-link="<%= animal_path(animal) %>" >
+          <tr data-link="<%= animal_path(animal) %>">
+            <td><%= animal_count=animal_count+1 %></td>
             <td><%= animal.earring_no %></td>
             <td><%= image_tag(animal.image.url(:small)) %></td>
             <td><%= animal.name %></td>
@@ -42,5 +45,3 @@
     </table>
   </div>
 </div>
-
-<%= render 'paginate' %>

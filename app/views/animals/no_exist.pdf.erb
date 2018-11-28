@@ -1,14 +1,14 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Gulec Tarim ve Hayvancilik</title>
+  <title>Gulec Tarim ve Hayvanccılık</title>
   <%= wicked_pdf_stylesheet_link_tag 'application' %>
     <%= wicked_pdf_javascript_include_tag  'application' %>
 </head>
 <body>
 <div class="container">
   <div class="row">
-  <h2>Güleç Tarım ve Hayvancılık - Bütün Hayvanlar</h2>
+  <h2>Güleç Tarım ve Hayvancılık - Satılan ya da Ölen Hayvanlar</h2>
   <div class="col new-animal">
 <div>Toplam Hayvan Sayisi: <strong><%= @animals.count %></strong></div>
   </div>
@@ -45,7 +45,7 @@
             <td>
               <% if animal.birthdate.present? %>
                 <%= animal.birthdate.strftime("%d/%m/%Y") %>
-              <% else %>
+                <% else %>
                 <%= animal.birthdate %>
               <% end %>
             </td>
@@ -56,7 +56,7 @@
             <td>
               <% if animal.mating_date.present? %>
                 <%= animal.mating_date.strftime("%d/%m/%Y") %>
-              <% else %>
+                <% else %>
                 <%= animal.mating_date %>
               <% end %>
             </td>
