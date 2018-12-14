@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.login-page {
+    background-image: url('sign-in-background.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+	width:100%;
+	min-height:570px;
+}
+
 .new-animal{
     text-align: right;
 }

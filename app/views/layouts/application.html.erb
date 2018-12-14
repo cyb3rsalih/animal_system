@@ -48,13 +48,19 @@
             </ul>
             <% end %>
         </nav>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>">
-          <%= value %>
-        </div>
-      <% end %>
-      <%= yield %>
-    </div>
+        <% if signed_in? %>
+          <div class="container">
+            <% flash.each do |key, value| %>
+              <div class="<%= flash_class(key) %>">
+                <%= value %>
+              </div>
+            <% end %>
+            <%= yield %>
+              </div>
+        <% else %>
+          <div class="login-page">
+            <%= yield %>
+          </div>
+        <% end %>
   </body>
 </html>

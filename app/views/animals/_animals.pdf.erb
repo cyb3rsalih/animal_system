@@ -1,0 +1,88 @@
+<div class="row">
+    <div class="col">
+        <table class="table table-hover table-bordered">
+        <thead class="table-warning">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Küpe No</th>
+            <th scope="col">Resmi</th>
+            <th scope="col">Adı</th>
+            <th scope="col">Doğum Tarihi</th>
+            <th scope="col">Turu</th>
+            <th scope="col">Irkı</th>
+            <th scope="col">Durumu</th>
+            <th scope="col">Cinsiyeti</th>
+            <th scope="col">Koğustuğu Tarih</th>
+            <th scope="col">Ana Küpe No</th>
+            <th scope="col">Annesinin Resmi</th>
+            <th scope="col">Danaları</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% animal_count = 0 %>
+            <% @animals.each do |animal| %>
+            <tr>
+                <td><%= animal_count=animal_count+1 %></td>
+                <td><%= animal.earring_no %></td>
+                <td><%= wicked_pdf_image_tag(animal.image.url(:small)) %></td>
+                <td><%= animal.name %></td>
+                <td>
+                <% if animal.birthdate.present? %>
+                    <%= animal.birthdate.strftime("%d/%m/%Y") %>
+                    <% else %>
+                    <%= animal.birthdate %>
+                <% end %>
+                </td>
+                <td><%= animal.animal_type %></td>
+                <td><%= animal.race %></td>
+                <td><%= animal.state %></td>
+                <td><%= animal.gender %></td>
+                <td>
+                <% if animal.mating_date.present? %>
+                    <%= animal.mating_date.strftime("%d/%m/%Y") %>
+                    <% else %>
+                    <%= animal.mating_date %>
+                <% end %>
+                </td>
+                <td><%= animal.mother_earring_no %></td>
+                <td><%= wicked_pdf_image_tag(animal.mother_image.url(:small)) %></td>
+                <td>
+                <% calf_count = 0 %>
+                <% animal.calves.each do |c| %>
+                <div class="strong"><%= calf_count = calf_count +1 %>. Dana</div>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                        <th scope="row">Küpe No</th>
+                        <td><%= c.earring_no %></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Doğum Tarihi</th>
+                        <td>
+                            <% if c.birthdate.present? %>
+                            <%= c.birthdate.strftime("%d/%m/%Y") %>
+                            <% else %>
+                            <%= c.birthdate %>
+                            <% end %>
+                        </td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Bilgisi</th>
+                        <td><%= c.info %></td>
+                        </tr>
+                        <tr>
+                        <th scope="row">Resmi</th>
+                        <td><%= wicked_pdf_image_tag(c.image.url(:medium)) %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr/>
+                <% end %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+        </div>
+    </div>
+
