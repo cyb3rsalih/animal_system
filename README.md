@@ -1,28 +1,7 @@
 <<<<<<< HEAD
-# README
+# Animal System
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Animal System hayvanların ve onların kişisel bilgilerinin tutulduğu bir sistemdir.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
-# gulec-tarim-hayvan-takip
->>>>>>> c893eecf78a618cf4ca0f16a19cac80e0d0ffbc0
+### Screenshots
+[Animal System]: https://github.com/ebrugulec/animal_system/blob/master/vendor/images/animal-system1.jpg "Animal System"
